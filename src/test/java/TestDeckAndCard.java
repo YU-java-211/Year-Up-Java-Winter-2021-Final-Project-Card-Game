@@ -14,7 +14,7 @@ public class TesDeckAndCard {
    {
 
      // action
-     Deck testDeck = new Deck();
+     Deck testDeck = new Deck("test");
      String actual = testdeck.cards[0].toString;
      String expected = "Ace of Clubs"; 
 
