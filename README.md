@@ -18,6 +18,7 @@
    * hearts
    * Palace
    * GoldFish
+   * bs (might have to rename?) 30 second interval to call bs before it moves to next person's turn, a button to make the call instead of verbal or chat.
 
 ### Stages
 1. Visual Java game with new graphics and lots of options for card games. (Nicole will walk through hello world app, so you know how to make a basic app)
