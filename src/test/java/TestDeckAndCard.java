@@ -7,7 +7,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import java.io.*;
 
-public class TesDeckAndCard {
+public class TestDeckAndCard {
 
    @Test
    public void testDeckAndCard()
@@ -15,7 +15,8 @@ public class TesDeckAndCard {
 
      // action
      Deck testDeck = new Deck("test");
-     String actual = testDeck.getCard(0);
+     Card testCard = testDeck.getCard(0);
+     String actual = testCard.toString();
      String expected = "Ace of Clubs"; 
 
      // assertion
