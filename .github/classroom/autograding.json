@@ -1,0 +1,24 @@
+{
+  "tests": [
+    {
+      "name": "another hello world test",
+      "setup": "",
+      "run": "gradle test",
+      "input": "",
+      "output": "BUILD SUCCESSFUL",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 50
+    },
+    {
+      "name": "Another hello world i/o test",
+      "setup": "sudo mkdir -p com/example/project; sudo cp ./src/main/java/com/example/project/HelloWorld.java ./com/example/project/HelloWorld.java",
+      "run": "sudo /usr/bin/javac ./com/example/project/HelloWorld.java; sudo java com.example.project.HelloWorld",
+      "input": "",
+      "output": "Hello IT 211! Congrats, you're more than half way through the quarter!",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 50
+    }
+  ]
+}
