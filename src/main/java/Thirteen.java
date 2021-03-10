@@ -152,7 +152,7 @@ public class Thirteen {
             playerTurn = nextPlayer(playerTurn);
         }
         System.out.println("Winner is: " + lastPlayer.getName());
-        displayState();
+        // displayState();
     }
 
     public static void main(String[] args) {
