@@ -20,17 +20,17 @@
    - Anifa & Abduvoris
 
 
-   * Uno (work with graphics group)
+   * Uno (work with graphics group) - Merron, Yosuof
    * Rummy
    * War
    * Black Jack - Noe, Monica
-   * thirteen  - Asa
+   * thirteen  - Asa, Lylla
   
    * Texas Holdem
    * poker?
-   * 3 card poker -Prashant
+   * 3 card poker -Prashant, Asa (after 13)
    * call bridge/call break
-   * hearts
+   * hearts - Rizkika, AZ
    * Palace
    * GoldFish/GoFish -Addy, Ernesto
    * bs (might have to rename?) 30 second interval to call bs before it moves to next person's turn, a button to make the call instead of verbal or chat. -Cedar
