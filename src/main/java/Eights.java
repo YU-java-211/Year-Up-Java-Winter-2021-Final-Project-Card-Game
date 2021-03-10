@@ -1,3 +1,4 @@
+
 // %%writefile Eights.java
 // To test in Colab/Jupyter notebooks, use the following code in its own code block:
 // Note, that you'll have to add the -e to the echo statement for this to be multiplayer!!
@@ -10,13 +11,13 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 /**
- * Simulates a game of Crazy Eights.
- * See https://en.wikipedia.org/wiki/Crazy_Eights.
+ * Simulates a game of Crazy Eights. See
+ * https://en.wikipedia.org/wiki/Crazy_Eights.
  */
 public class Eights {
 
-    //private Player one;
-    //private Player two;
+    // private Player one;
+    // private Player two;
     private ArrayList<Player> players;
     private Hand drawPile;
     private Hand discardPile;
@@ -29,7 +30,7 @@ public class Eights {
 
         Deck deck = new Deck("Deck");
         deck.shuffle();
-        
+
         // set up array list
         players = new ArrayList<Player>();
 
@@ -49,13 +50,10 @@ public class Eights {
 
         // deal cards to each player
 
-
-
-        /*one = new Player("Allen");
-        deck.deal(one.getHand(), 5);
-        two = new Player("Chris");
-        deck.deal(two.getHand(), 5);
-        */
+        /*
+         * one = new Player("Allen"); deck.deal(one.getHand(), 5); two = new
+         * Player("Chris"); deck.deal(two.getHand(), 5);
+         */
 
         // turn one card face up
         discardPile = new Hand("Discards");
@@ -66,14 +64,14 @@ public class Eights {
         deck.dealAll(drawPile);
 
         // create the scanner we'll use to wait for the user
-        //in = new Scanner(System.in);
+        // in = new Scanner(System.in);
     }
 
     /**
      * Returns true if either hand is empty.
      */
     public boolean isDone() {
-        //return one.getHand().isEmpty() || two.getHand().isEmpty();
+        // return one.getHand().isEmpty() || two.getHand().isEmpty();
         for (Player player : players) {
             if (player.getHand().isEmpty()) {
                 return true;
@@ -113,11 +111,11 @@ public class Eights {
      * Switches players.
      */
     public Player nextPlayer(Player current) {
-        
-        if (players.indexOf(current) == players.size() -1) {
+
+        if (players.indexOf(current) == players.size() - 1) {
             return players.get(0);
         }
-        
+
         int playerIndex = players.indexOf(current);
 
         if (playerIndex != -1) {
@@ -127,13 +125,10 @@ public class Eights {
             // build better default later!!
             return current;
         }
-        
-        /*if (current == one) {
-            return two;
-        } else {
-            return one;
-        }
-        */
+
+        /*
+         * if (current == one) { return two; } else { return one; }
+         */
     }
 
     /**
@@ -147,9 +142,9 @@ public class Eights {
         discardPile.display();
         System.out.print("Draw pile: ");
         System.out.println(drawPile.size() + " cards");
-        /* Disabling for easier automation
-        in.nextLine();
-        */
+        /*
+         * Disabling for easier automation in.nextLine();
+         */
     }
 
     /**
@@ -184,9 +179,9 @@ public class Eights {
         for (Player player : players) {
             player.displayScore();
         }
-        /* one.displayScore();
-        two.displayScore();
-        */
+        /*
+         * one.displayScore(); two.displayScore();
+         */
     }
 
     /**
