@@ -20,9 +20,9 @@
    - Anifa & Abduvoris
 
 
-   * Uno (work with graphics group) - Merron, Yosuof
+   * Uno (work with graphics group) - Merron, Yosuof, Javier, Maritza
    * Rummy
-   * War
+   * War - James
    * Black Jack - Noe, Monica
    * thirteen  - Asa, Lylla
   
