@@ -7,9 +7,10 @@ public class Thirteen {
     private Hand discardPile;
     private Card threeOfSpades;
 
-    public Thirteen(){
+    public Thirteen() {
         threeOfSpades = new Card(3, 3);
         Deck deck = new Deck("Deck");
+        discardPile = new Hand("Discards");
         deck.shuffle();
 
         players = new ArrayList<Player>();
@@ -46,6 +47,27 @@ public class Thirteen {
         return false;
     }
 
+    public void findLowest(){
+        String firstPlayer="";
+        for(int j =0;j<players.size();j++){
+            Hand hand = players.get(j).getHand();
+            for (int i = 0; i < hand.size(); i++) {
+                Card card = hand.getCard(i);
+                if (card.equals(threeOfSpades)) {
+                    firstPlayer = players.get(j).getName();
+                    Player temp = players.get(0);
+                    players.set(0,players.get(j));
+                    players.set(j,temp);
+
+                    discardPile.addCard(card);
+                    hand.popCard(i);
+                    System.out.println("Discards:");
+                    System.out.println(discardPile.getCard(0));
+                }
+            }
+        }
+    }
+
     public Player nextPlayer(Player current) {
 
         if (players.indexOf(current) == players.size() - 1) {
@@ -70,7 +92,7 @@ public class Thirteen {
         Thirteen game = new Thirteen();
         //System.out.println(threeOfSpades);
         game.displayState();
-        
+        game.findLowest();
         
         
         //game.playGame();
