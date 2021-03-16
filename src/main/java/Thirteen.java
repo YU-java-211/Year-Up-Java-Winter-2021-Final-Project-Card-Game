@@ -69,6 +69,18 @@ public class Thirteen {
 
     }
 
+    public void playCard(Hand hand, Card card){
+        discardPile.addCard(card);
+        //add pop thing
+
+    }
+
+    public void logic(Player player){
+        Card prev = discardPile.lastCard();
+        //find first card thats higher regardless of strategy
+        //put card on discard pile
+    }
+
     public Player nextPlayer(Player current) {
 
         if (players.indexOf(current) == players.size() - 1) {
@@ -89,6 +101,11 @@ public class Thirteen {
     public void playGame(){
         findLowest();
         displayState();
+        Player playerTurn = players.get(0);
+        while(!isDone()){
+            //actual game logic
+            playerTurn = nextPlayer(playerTurn);
+        }
     }
 
     public static void main(String[] args) {
