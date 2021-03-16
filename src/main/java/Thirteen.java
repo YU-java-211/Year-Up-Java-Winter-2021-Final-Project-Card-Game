@@ -7,7 +7,7 @@ public class Thirteen {
     private Hand discardPile;
     private Card threeOfSpades;
 
-    public Thirteen(){
+    public Thirteen() {
         threeOfSpades = new Card(3, 3);
         Deck deck = new Deck("Deck");
         deck.shuffle();
@@ -18,11 +18,11 @@ public class Thirteen {
         System.out.println("Please enter the name of each of your players on a seperate line");
 
         for (int i = 0; i < 4; i++) {
-            if(scnr.hasNextLine()){
+            if (scnr.hasNextLine()) {
                 String playerName = scnr.nextLine();
                 players.add((new Player(playerName)));
             }
-            
+
         }
 
         for (Player player : players) {
@@ -46,6 +46,19 @@ public class Thirteen {
         return false;
     }
 
+    public String whosFirst(ArrayList<Player> players) {
+        String firstPlayer = "";
+        for (Player player : players) {
+            Hand currentPlayerHand = player.getHand();
+            for (int i = 0; i < 12; i++) {
+                if (currentPlayerHand.getCard(i).equals(threeOfSpades)) {
+                    firstPlayer = player.getName();
+                }
+            }
+        }
+        return firstPlayer;
+    }
+
     public Player nextPlayer(Player current) {
 
         if (players.indexOf(current) == players.size() - 1) {
@@ -56,23 +69,19 @@ public class Thirteen {
 
         if (playerIndex != -1) {
             return players.get(playerIndex + 1);
-        }
-        else {
+        } else {
             System.out.println("Oh no, we lost a player!!");
             // build better default later!!
             return current;
         }
     }
 
-
-
     public static void main(String[] args) {
         Thirteen game = new Thirteen();
-        //System.out.println(threeOfSpades);
+        // System.out.println(threeOfSpades);
         game.displayState();
-        
-        
-        
-        //game.playGame();
+        System.out.println(game.whosFirst(game.players) + " will go first!");
+
+        // game.playGame();
     }
 }
