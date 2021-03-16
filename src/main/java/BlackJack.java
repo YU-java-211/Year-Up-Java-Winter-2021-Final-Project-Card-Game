@@ -20,8 +20,8 @@ public class BlackJack{
 	        livePlayer = new Player("Player");
 	        dealer = new Player("Dealer");
 
-	        deck.deal(livePlayer, 2);
-	        deck.deal(dealer, 2);
+	        deck.deal(livePlayer.getHand(), 2);
+	        deck.deal(dealer.getHand(), 2);
 	        
 
 	        // put the rest of the deck face down
@@ -41,7 +41,10 @@ public class BlackJack{
         	pointPlayer = 0;
         	int aces = 0; 
         	Hand playerHand = livePlayer.getHand();
-	        for (Card card : playerHand) {
+        	for (int i = 0; i < playerHand.cards.size(); i++) {
+        		
+        	}
+	        for (Card card : playerHand.cards) {
 	        	if (card.toString().indexOf("Ace") > -1) {
 	        		aces++;
 	        	}
@@ -51,6 +54,25 @@ public class BlackJack{
 	        /* Disabling for easier automation
 	        in.nextLine();
 	        */
+	        System.out.println(pointPlayer + aces + " or " + pointPlayer + (aces * 11));
+	        
+	        pointDealer = 1; 
+	        dCard1 = 0;
+	        dCard2 = 1; 
+	        Hand dealerHand = dealer.getHand();
+	        for (int i = 0; i < dealerHand.cards.size(); i++) {
+	        	
+	        }
+	        for (Card card : playerHand.cards) {
+	        	if (card.toString().indexOf("Ace") > -1) {
+	        		aces++; 
+	        	}
+	        	System.out.println(card); 
+	        	pointDealer += card.getRank();
+	        }
+	        System.out.println(pointDealer + aces + " or " + pointDealer + (aces * 11));
+	        // one card facedown
+	        // reset values to default 
 	    }
 	 
 	 public void playGame() {
@@ -59,7 +81,7 @@ public class BlackJack{
 	    }
 	 
 	 public static void main(String[] args) {
-		 
+		 	
 	 
 	 }
 	
