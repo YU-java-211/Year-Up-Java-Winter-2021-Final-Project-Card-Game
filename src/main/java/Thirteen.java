@@ -47,18 +47,17 @@ public class Thirteen {
         return false;
     }
 
-<<<<<<< HEAD
-    public void findLowest(){
-        String firstPlayer="";
-        for(int j =0;j<players.size();j++){
+    public void findLowest() {
+        String firstPlayer = "";
+        for (int j = 0; j < players.size(); j++) {
             Hand hand = players.get(j).getHand();
             for (int i = 0; i < hand.size(); i++) {
                 Card card = hand.getCard(i);
                 if (card.equals(threeOfSpades)) {
                     firstPlayer = players.get(j).getName();
                     Player temp = players.get(0);
-                    players.set(0,players.get(j));
-                    players.set(j,temp);
+                    players.set(0, players.get(j));
+                    players.set(j, temp);
 
                     discardPile.addCard(card);
                     hand.popCard(i);
@@ -67,19 +66,6 @@ public class Thirteen {
                 }
             }
         }
-=======
-    public String whosFirst(ArrayList<Player> players) {
-        String firstPlayer = "";
-        for (Player player : players) {
-            Hand currentPlayerHand = player.getHand();
-            for (int i = 0; i < 12; i++) {
-                if (currentPlayerHand.getCard(i).equals(threeOfSpades)) {
-                    firstPlayer = player.getName();
-                }
-            }
-        }
-        return firstPlayer;
->>>>>>> 36523501b741c038ffcc5bd64e586d56e6c4b34f
     }
 
     public Player nextPlayer(Player current) {
@@ -103,15 +89,8 @@ public class Thirteen {
         Thirteen game = new Thirteen();
         // System.out.println(threeOfSpades);
         game.displayState();
-<<<<<<< HEAD
         game.findLowest();
-        
-        
-        //game.playGame();
-=======
-        System.out.println(game.whosFirst(game.players) + " will go first!");
 
         // game.playGame();
->>>>>>> 36523501b741c038ffcc5bd64e586d56e6c4b34f
     }
 }
