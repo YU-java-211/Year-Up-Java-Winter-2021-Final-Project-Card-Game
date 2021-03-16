@@ -19,11 +19,11 @@ public class Thirteen {
         System.out.println("Please enter the name of each of your players on a seperate line");
 
         for (int i = 0; i < 4; i++) {
-            if(scnr.hasNextLine()){
+            if (scnr.hasNextLine()) {
                 String playerName = scnr.nextLine();
                 players.add((new Player(playerName)));
             }
-            
+
         }
 
         for (Player player : players) {
@@ -47,6 +47,7 @@ public class Thirteen {
         return false;
     }
 
+<<<<<<< HEAD
     public void findLowest(){
         String firstPlayer="";
         for(int j =0;j<players.size();j++){
@@ -66,6 +67,19 @@ public class Thirteen {
                 }
             }
         }
+=======
+    public String whosFirst(ArrayList<Player> players) {
+        String firstPlayer = "";
+        for (Player player : players) {
+            Hand currentPlayerHand = player.getHand();
+            for (int i = 0; i < 12; i++) {
+                if (currentPlayerHand.getCard(i).equals(threeOfSpades)) {
+                    firstPlayer = player.getName();
+                }
+            }
+        }
+        return firstPlayer;
+>>>>>>> 36523501b741c038ffcc5bd64e586d56e6c4b34f
     }
 
     public Player nextPlayer(Player current) {
@@ -78,23 +92,26 @@ public class Thirteen {
 
         if (playerIndex != -1) {
             return players.get(playerIndex + 1);
-        }
-        else {
+        } else {
             System.out.println("Oh no, we lost a player!!");
             // build better default later!!
             return current;
         }
     }
 
-
-
     public static void main(String[] args) {
         Thirteen game = new Thirteen();
-        //System.out.println(threeOfSpades);
+        // System.out.println(threeOfSpades);
         game.displayState();
+<<<<<<< HEAD
         game.findLowest();
         
         
         //game.playGame();
+=======
+        System.out.println(game.whosFirst(game.players) + " will go first!");
+
+        // game.playGame();
+>>>>>>> 36523501b741c038ffcc5bd64e586d56e6c4b34f
     }
 }
