@@ -10,9 +10,9 @@ public class Card {
     public static final String[] SUITS = {
         "Clubs", "Diamonds", "Hearts", "Spades"};
 
-    private final int rank;
+    final int rank;
 
-    private final int suit;
+    final int suit;
 
     /**
      * Constructs a card of the given rank and suit.
