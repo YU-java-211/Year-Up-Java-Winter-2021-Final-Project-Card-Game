@@ -59,9 +59,9 @@ public class Thirteen {
                     Player temp = players.get(0);
                     players.set(0, players.get(j));
                     players.set(j, temp);
-                    discardPile.addCard(card);
-                    hand.popCard(i);
-                    
+
+                    playCard(hand, card);
+
                 }
             }
         }
@@ -73,7 +73,7 @@ public class Thirteen {
         for (int i = 0; i < hand.size(); i++) {
             Card currentCard = hand.getCard(i);
             if (currentCard.equals(card)) {
-                System.out.println(lastPlayer.getName()+" is playing: " + currentCard.toString());
+                System.out.println(lastPlayer.getName() + " is playing: " + currentCard.toString());
                 discardPile.addCard(currentCard);
                 hand.popCard(i); // adds card to discard pile
                 break;
@@ -94,13 +94,13 @@ public class Thirteen {
                 prev = discardPile.lastCard();
                 break;
             }
-            if (currentHand.getCard(i).getRank() >= prev.getRank()) { // if card is higher than previous card
+            if (currentHand.getCard(i).getRank() >= prev.getRank()) {
+
                 lastPlayer = player;
                 playCard(currentHand, currentHand.getCard(i));
                 prev = discardPile.lastCard();
 
                 break;
-            } else {
             }
         }
 
@@ -123,7 +123,7 @@ public class Thirteen {
 
     public void playGame() {
         findLowest();
-        Player playerTurn = players.get(0);
+        Player playerTurn = players.get(1);
         while (!isDone()) {
             logic(playerTurn); // actual game logic
             playerTurn = nextPlayer(playerTurn);
