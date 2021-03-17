@@ -59,7 +59,6 @@ public class Thirteen {
                     Player temp = players.get(0);
                     players.set(0, players.get(j));
                     players.set(j, temp);
-
                     discardPile.addCard(card);
                     hand.popCard(i);
                     
