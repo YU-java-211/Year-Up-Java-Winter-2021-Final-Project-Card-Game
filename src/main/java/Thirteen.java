@@ -6,6 +6,7 @@ public class Thirteen {
     private ArrayList<Player> players;
     private Hand discardPile;
     private Card threeOfSpades;
+    private Player lastPlayer;
 
     public Thirteen() {
         threeOfSpades = new Card(3, 3);
@@ -36,7 +37,6 @@ public class Thirteen {
         for (Player player : players) {
             player.display();
         }
-        System.out.println("Discards: ");
         discardPile.display();
     }
 
@@ -50,20 +50,18 @@ public class Thirteen {
     }
 
     public void findLowest() {
-        String firstPlayer = "";
         for (int j = 0; j < players.size(); j++) {
             Hand hand = players.get(j).getHand();
             for (int i = 0; i < hand.size(); i++) {
                 Card card = hand.getCard(i);
                 if (card.equals(threeOfSpades)) {
-                    firstPlayer = players.get(j).getName();
+                    lastPlayer = players.get(j);
                     Player temp = players.get(0);
                     players.set(0, players.get(j));
                     players.set(j, temp);
 
                     discardPile.addCard(card);
                     hand.popCard(i);
-                    System.out.println("Discards:");
                     System.out.println(discardPile.getCard(0));
                 }
             }
@@ -71,41 +69,44 @@ public class Thirteen {
 
     }
 
-    public void playCard(Hand hand, Card card){
-        
-        for(int i = 0; i < hand.size(); i++){
+    public void playCard(Hand hand, Card card) {
+
+        for (int i = 0; i < hand.size(); i++) {
             Card currentCard = hand.getCard(i);
-            if(currentCard.equals(card)){
-                //hand.popCard(i); // removes card from hand
-               
-                discardPile.addCard(hand.popCard(i)); // adds card to discard pile
+            if (currentCard.equals(card)) {
+                // hand.popCard(i); // removes card from hand
+                System.out.println("Playing: " + currentCard.toString());
+                discardPile.addCard(currentCard);
+                hand.popCard(i); // adds card to discard pile
                 break;
             }
         }
 
     }
 
-    public void logic(Player player){
+    public void logic(Player player) {
         displayState();
         Card prev = discardPile.lastCard();
         Hand currentHand = player.getHand();
-        //find first card thats higher regardless of strategy
+        // find first card thats higher regardless of strategy
         System.out.println(player.getName());
-        for(int i = 0; i < currentHand.size(); i++){
-            if(currentHand.getCard(i).getRank()>= prev.getRank()){ // if card is higher than previous card
-                System.out.println("previous card " + prev.toString());
+        for (int i = 0; i < currentHand.size(); i++) {
+            if (player.getName() == lastPlayer.getName()) {
                 playCard(currentHand, currentHand.getCard(i));
                 prev = discardPile.lastCard();
-                System.out.println("previous card " + prev.toString());
+                break;
+            }
+            if (currentHand.getCard(i).getRank() >= prev.getRank()) { // if card is higher than previous card
+                lastPlayer = player;
+                playCard(currentHand, currentHand.getCard(i));
+                prev = discardPile.lastCard();
 
                 break;
-            }
-            else{
-                System.out.println("Logic not working");
-                break;
+            } else {
+                System.out.println("current card not played");
             }
         }
-        
+
     }
 
     public Player nextPlayer(Player current) {
@@ -115,36 +116,33 @@ public class Thirteen {
 
             return players.get(0);
         }
-        
-        else if(players.indexOf(current)<players.size()){
-            int playerIndex = players.indexOf(current) +1;
-            System.out.println("Moving from " + current.getName()+ " to "+players.get(playerIndex).getName());
+
+        else if (players.indexOf(current) < players.size()) {
+            int playerIndex = players.indexOf(current) + 1;
+            System.out.println("Moving from " + current.getName() + " to " + players.get(playerIndex).getName());
 
             return players.get(playerIndex);
-        }
-        else{
+        } else {
             System.out.println("Something went wrong");
             return current;
         }
 
-        /*int playerIndex = players.indexOf(current);
-
-        if (playerIndex != -1) {
-            return players.get(playerIndex + 1);
-            System.out.println("Moving onto : "+players.get(playerIndex + 1).getName());
-        } else {
-            System.out.println("Oh no, we lost a player!!");
-            // build better default later!!
-            return current;
-        }*/
+        /*
+         * int playerIndex = players.indexOf(current);
+         * 
+         * if (playerIndex != -1) { return players.get(playerIndex + 1);
+         * System.out.println("Moving onto : "+players.get(playerIndex + 1).getName());
+         * } else { System.out.println("Oh no, we lost a player!!"); // build better
+         * default later!! return current; }
+         */
     }
 
-    public void playGame(){
+    public void playGame() {
         findLowest();
         displayState();
         Player playerTurn = players.get(0);
-        while(!isDone()){
-            logic(playerTurn); //actual game logic
+        while (!isDone()) {
+            logic(playerTurn); // actual game logic
             playerTurn = nextPlayer(playerTurn);
         }
     }
