@@ -30,6 +30,7 @@ public class CardTable extends Canvas {
             for (int rank = 1; rank <= 13; rank++) {
                 String s = String.format("%s/%02d%c.gif",
                                          cardset, rank, c);
+                System.out.println(s);
                 images[rank][suit] = new ImageIcon(s).getImage();
             }
         }
@@ -63,6 +64,7 @@ public class CardTable extends Canvas {
                     (int) (y * cardHeight),
                     null);
     }
+    
 
     /**
      * Special method invoked when the Frame needs to be drawn.

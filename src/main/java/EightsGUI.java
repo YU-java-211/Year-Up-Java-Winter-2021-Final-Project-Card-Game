@@ -13,25 +13,28 @@ import java.util.ArrayList;
  * Simulates a game of Crazy Eights.
  * See https://en.wikipedia.org/wiki/Crazy_Eights.
  */
-public class Eights {
+public class EightsGUI extends Games {
 
-    //private Player one;
-    //private Player two;
-    private ArrayList<Player> players;
+    //private PlayerEightsGUI one;
+    //private PlayerEightsGUI two;
+    private ArrayList<PlayerEightsGUI> players;
+    private ArrayList<Hand> piles;
     private Hand drawPile;
     private Hand discardPile;
+    private Deck deck;
     private Scanner in;
+    
 
     /**
      * Initializes the state of the game.
      */
-    public Eights() {
+    public EightsGUI() {
 
         Deck deck = new Deck("Deck");
         deck.shuffle();
         
         // set up array list
-        players = new ArrayList<Player>();
+        players = new ArrayList<PlayerEightsGUI>();
 
         // set up Scanner
         in = new Scanner(System.in);
@@ -40,10 +43,14 @@ public class Eights {
 
         while (in.hasNextLine()) {
             String playerName = in.nextLine();
-            players.add((new Player(playerName)));
+            // for manual input
+            if (playerName.equals("done")) {
+            	break;
+            }
+            players.add((new PlayerEightsGUI(playerName)));
         }
 
-        for (Player player : players) {
+        for (PlayerEightsGUI player : players) {
             deck.deal(player.getHand(), 5);
         }
 
@@ -51,9 +58,9 @@ public class Eights {
 
 
 
-        /*one = new Player("Allen");
+        /*one = new PlayerEightsGUI("Allen");
         deck.deal(one.getHand(), 5);
-        two = new Player("Chris");
+        two = new PlayerEightsGUI("Chris");
         deck.deal(two.getHand(), 5);
         */
 
@@ -64,6 +71,10 @@ public class Eights {
         // put the rest of the deck face down
         drawPile = new Hand("Draw pile");
         deck.dealAll(drawPile);
+        
+        piles = new ArrayList<Hand>();
+        piles.add(discardPile);
+        piles.add(drawPile);
 
         // create the scanner we'll use to wait for the user
         //in = new Scanner(System.in);
@@ -74,7 +85,7 @@ public class Eights {
      */
     public boolean isDone() {
         //return one.getHand().isEmpty() || two.getHand().isEmpty();
-        for (Player player : players) {
+        for (PlayerEightsGUI player : players) {
             if (player.getHand().isEmpty()) {
                 return true;
             }
@@ -112,7 +123,7 @@ public class Eights {
     /**
      * Switches players.
      */
-    public Player nextPlayer(Player current) {
+    public PlayerEightsGUI nextPlayer(PlayerEightsGUI current) {
         
         if (players.indexOf(current) == players.size() -1) {
             return players.get(0);
@@ -140,7 +151,7 @@ public class Eights {
      * Displays the state of the game.
      */
     public void displayState() {
-        for (Player player : players) {
+        for (PlayerEightsGUI player : players) {
             player.display();
         }
 
@@ -155,7 +166,7 @@ public class Eights {
     /**
      * One player takes a turn.
      */
-    public void takeTurn(Player player) {
+    public void takeTurn(PlayerEightsGUI player) {
         Card prev = discardPile.lastCard();
         Card next = player.play(this, prev);
         discardPile.addCard(next);
@@ -163,6 +174,32 @@ public class Eights {
         System.out.println(player.getName() + " plays " + next);
         System.out.println();
     }
+    
+    public ArrayList<PlayerEightsGUI> getPlayers() {
+    	return this.players;
+    }
+    
+    public Deck getDeck() {
+    	return this.deck;
+    }
+    
+    public ArrayList<Hand> getPiles() {
+    	return this.piles;
+    }
+    
+    public PlayerEightsGUI getPlayer(String playerName) {
+    	for (PlayerEightsGUI player : players) {
+    		String testName = player.getName();
+    		
+    		if (playerName.equals(testName)) {
+    		    return player;
+    	    }
+ 
+    	 }
+    	return players.get(0);
+    }
+    
+    
 
     /**
      * Plays the game.
@@ -171,7 +208,7 @@ public class Eights {
         // changed from one to players.get(0);
         // then rename the player in this to playerTurn so it doesn't clash
         // with other code we have in our foreach looops
-        Player playerTurn = players.get(0);
+        PlayerEightsGUI playerTurn = players.get(0);
 
         // keep playing until there's a winner
         while (!isDone()) {
@@ -181,7 +218,7 @@ public class Eights {
         }
 
         // display the final score
-        for (Player player : players) {
+        for (PlayerEightsGUI player : players) {
             player.displayScore();
         }
         /* one.displayScore();
@@ -193,8 +230,8 @@ public class Eights {
      * Creates the game and runs it.
      */
     public static void main(String[] args) {
-        Eights game = new Eights();
-        game.playGame();
+
+        //game.playGame();
     }
 
 }

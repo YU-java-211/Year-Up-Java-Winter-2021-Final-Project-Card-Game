@@ -1,7 +1,7 @@
 /**
  * A player in a game of crazy eights.
  */
-public class Player {
+public class PlayerEightsGUI {
 
     private String name;
     private Hand hand;
@@ -9,7 +9,7 @@ public class Player {
     /**
      * Constructs a player with an empty hand.
      */
-    public Player(String name) {
+    public PlayerEightsGUI(String name) {
         this.name = name;
         this.hand = new Hand(name);
     }
@@ -31,10 +31,10 @@ public class Player {
     /**
      * Removes and returns a legal card from the player's hand.
      */
-    public Card play(Eights eights, Card prev) {
+    public Card play(EightsGUI eightsGUI, Card prev) {
         Card card = searchForMatch(prev);
         if (card == null) {
-            card = drawForMatch(eights, prev);
+            card = drawForMatch(eightsGUI, prev);
         }
         return card;
     }
@@ -55,9 +55,9 @@ public class Player {
     /**
      * Draws cards until a match is found.
      */
-    public Card drawForMatch(Eights eights, Card prev) {
+    public Card drawForMatch(EightsGUI game, Card prev) {
         while (true) {
-            Card card = eights.drawCard();
+            Card card = game.drawCard();
             System.out.println(name + " draws " + card);
             if (cardMatches(card, prev)) {
                 return card;
