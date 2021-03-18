@@ -89,15 +89,38 @@ public class Thirteen {
         // find first card thats higher regardless of strategy
 
         for (int i = 0; i < currentHand.size(); i++) {
+            Card currentCard = currentHand.getCard(i);
             if (player.getName() == lastPlayer.getName()) {
-                playCard(currentHand, currentHand.getCard(i));
+                playCard(currentHand, currentCard);
                 prev = discardPile.lastCard();
                 break;
             }
-            if (currentHand.getCard(i).getRank() >= prev.getRank()) {
-
+            if (currentCard.getRank() == 2) {
                 lastPlayer = player;
                 playCard(currentHand, currentHand.getCard(i));
+                prev = discardPile.lastCard();
+
+                break;
+            }
+            if (currentCard.getRank() == 1 && prev.getRank() >= 3) {
+                lastPlayer = player;
+                playCard(currentHand, currentHand.getCard(i));
+                prev = discardPile.lastCard();
+
+                break;
+            }
+            if (currentCard.getRank() == prev.getRank() && prev.getRank() < 3) {
+
+                lastPlayer = player;
+                playCard(currentHand, currentCard);
+                prev = discardPile.lastCard();
+
+                break;
+            }
+            if (currentCard.getRank() >= prev.getRank() && prev.getRank() >= 3) {
+
+                lastPlayer = player;
+                playCard(currentHand, currentCard);
                 prev = discardPile.lastCard();
 
                 break;
