@@ -3,8 +3,8 @@
  */
 public class Player {
 
-    private String name;
-    private Hand hand;
+    String name;
+    Hand hand;
 
     /**
      * Constructs a player with an empty hand.
