@@ -7,7 +7,7 @@ import java.util.Random;
 public class CardCollection {
 
     private String label;
-    private ArrayList<Card> cards;
+    ArrayList<Card> cards;
 
     /**
      * Constructs an empty collection.
