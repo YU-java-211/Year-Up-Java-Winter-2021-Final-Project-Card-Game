@@ -1,6 +1,6 @@
 
 
-Package uno;
+package uno;
 
 
 public class UnoCard  
@@ -28,7 +28,7 @@ public class UnoCard
        }
        
        private final Color color;
-       private final Value value:
+       private final Value value;
     	   
     	   public UnoCard (final Color color, final Value value)
     	       {
