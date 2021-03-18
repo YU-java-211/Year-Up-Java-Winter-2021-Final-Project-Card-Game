@@ -139,7 +139,7 @@ public class Thirteen {
             int playerIndex = players.indexOf(current) + 1;
             return players.get(playerIndex);
         } else {
-            System.out.println("Something went wrong");
+            System.out.println("Something went wrong!");
             return current;
         }
     }
