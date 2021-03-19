@@ -162,17 +162,17 @@ public class Solitair {
 	    	return false;
 	    }
 		
-	    
+	 // this is saying that colors are different 
 	    public boolean stackAbleColor(int a, int b) {
-	    	
+	    	// is a is black and b is red then that good 
 	        if ((a == 1 || a == 2) && (b == 0 || b == 3)) {
 	        
 	        	return true;
-	        	
+	        	// if b is black and a is red that good 
 	        } else if ((b == 1 || b == 2) && (a == 0 || a == 3)) {
 	        	return true;
 	        	
-	        } else {
+	        } else { // other wise it not return false.
 	         	return false;
 	        }
 	    }
