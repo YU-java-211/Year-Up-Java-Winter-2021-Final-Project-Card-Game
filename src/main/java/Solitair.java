@@ -180,7 +180,7 @@ public class Solitair {
 		
 		
 		
-		
+	// new method for card renk need to be created for the 4 mpy slotes on the top.	
 		
 		
 		
