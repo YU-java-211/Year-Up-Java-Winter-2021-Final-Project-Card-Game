@@ -154,7 +154,28 @@ public class Solitair {
 	    // compare the card on the pile in the (baseCard) to the card you are trying to move on top of it (topCard)
 	    //and see if it is legal: most be oppsite color and most be 1 less then baseCard
 	    public boolean canStack(Card baseCard, Card topCard) {
-			
+	    	if ((baseCard.getRank() - 1) == topCard.getRank()) {
+	    		if (stackAbleColor(baseCard.getSuit(), topCard.getSuit())) {
+	    			return true;
+	    			}
+	    		}
+	    	return false;
+	    }
+		
+	    
+	    public boolean stackAbleColor(int a, int b) {
+	    	
+	        if ((a == 1 || a == 2) && (b == 0 || b == 3)) {
+	        
+	        	return true;
+	        	
+	        } else if ((b == 1 || b == 2) && (a == 0 || a == 3)) {
+	        	return true;
+	        	
+	        } else {
+	         	return false;
+	        }
+	    }
 	    
 		
 		
@@ -168,7 +189,7 @@ public class Solitair {
 		
 		
 		
-		
+	// clubs is 0 diamonds is 1 hearts is 2 and spades is 3	
 		
 		
 		
