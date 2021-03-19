@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Bluff {
 	private ArrayList<Player> players;
@@ -66,26 +67,30 @@ public class Bluff {
 			return 1;
 		}
 		else {
-			return currentRank+1;
+			return currentRank + 1;
 		}
 	}
 	
-	public void lie(Player player) {
+	public void lie(Player player, int cardNum) {
 		double rand = Math.random();
 		Random randGen = new Random();
+		int i = 1;
 		
+		// I would kind of like this to not be random as well but I'm not sure how else to do it
 		if(rand < .5 || tempPile.size() == 0) {
-			// this was a test statement
-			// System.out.println(player.getName() + " is going to lie.");
+			// this is a debugging statement
+			// System.out.println(player.getName() + " is going to lie. They have " + player.getHand().size() + " cards. They will try to add " + cardNum + " card(s) to the temp pile.");
 			
-			// this just adds cards to the temp pile until the temp pile has 4 cards in it
-			while(tempPile.size() != 4 && !player.getHand().isEmpty()) {
-				// this picks cards at random to put in the temp pile
-				// puts them in the temp pile
-				// and then removes them from the player's hand
+			// so what this does is
+			// take i, and as long as i is less than or equal to cardNum and the player's hand isn't empty
+			// add cards selected randomly from the player's hand to the temp pile
+			// and take those cards out of the player's hand
+			// since i starts at 1, if the temp pile already has 3 cards in it, it'll only run once
+			while(i <= cardNum && !player.getHand().isEmpty()) {
 				int randSelect = randGen.nextInt(player.getHand().size());
 				tempPile.addCard(player.getHand().getCard(randSelect));
 				player.getHand().popCard(randSelect);
+				i++;
 			}
 		}
 	}
@@ -174,7 +179,21 @@ public class Bluff {
 		// if there aren't 4 cards in the temp pile, call the lie function
 		// which will have the player lie if the temp pile has no cards or if the random number says they're going to lie
 		if(tempPile.size() < 4) {
-			lie(currentPlayer);
+			// so the lie method receives a number of cards to try and add
+			// if you have 3 cards in the temp pile you can only add 1, so
+			// if you have 0 cards you can add 1-4, if you have 1 card you can add 1-3, if you have 2 cards you can add 1-2 cards
+			// so I made a random generator that gets a number between those possibilities
+			// and then sends that down to the lie method as the number of cards the AI player is trying to add
+			int randNum;
+			
+			if(tempPile.size() == 3) {
+				randNum = 1;
+			}
+			else {
+				randNum = ThreadLocalRandom.current().nextInt(1, Math.abs(tempPile.size() - 4) + 1);
+			}
+			
+			lie(currentPlayer, randNum);
 		}
 		
 		for(int i = 0; i < currentPlayer.getHand().size(); i++) {
