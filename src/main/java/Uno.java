@@ -35,8 +35,8 @@ public class Uno {
 	}
 	
 	/**
-	 * Creates 108 uno cards. 76 Number cards, 24 Action cards, & 8 Wild card.
-	 */
+	 * We are making 108 uno cards with 76 number cards, 24 action and 8 wild cards.*/
+	
 	public void generateUnoDeck() {
 		
 		//Check Card class - String[] CARD_TYPES
