@@ -6,8 +6,8 @@ import java.util.Random;
  */
 public class CardCollection {
 
-    private String label;
-    private ArrayList<Card> cards;
+    String label;
+    ArrayList<Card> cards;
 
     /**
      * Constructs an empty collection.
@@ -28,14 +28,20 @@ public class CardCollection {
      * Returns a string representation of the card collection.
      */
     public String toString() {
-        return label + ": " + cards.toString();
+    	String cardList = "\t" + this.label + "\n";
+    	cardList += "---------------------------------------------------\n";
+    	for(int i = 0; i<cards.size(); i++) {
+    		cardList += "List index: " + i + "\tCard: " + cards.get(i) + "\n";
+    	}
+    	cardList += "---------------------------------------------------";
+        return cardList;
     }
 
     /**
-     * Adds the given card to the collection.
+     * Adds the given card to the collection. At the top of the list.
      */
     public void addCard(Card card) {
-        cards.add(card);
+        cards.add(0, card);
     }
 
     /**

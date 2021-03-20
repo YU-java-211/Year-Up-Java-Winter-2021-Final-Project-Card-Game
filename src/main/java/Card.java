@@ -3,81 +3,69 @@
  */
 public class Card {
 
-    public static final String[] RANKS = {
-        null, "Ace", "2", "3", "4", "5", "6", "7",
-        "8", "9", "10", "Jack", "Queen", "King"};
+	public static final String[] CARD_TYPE = {
+            "Number", "Action", "Wild"};
+	
+	public static final String[] NUMBERS = {
+        "0", "1", "2", "3", "4", "5", "6", "7",
+        "8", "9"};
+    
+    public static final String[] ACTIONS = {
+            "Draw +2", "Reverse", "Skip"};
+    
+    public static final String[] WILDS = {
+            "Wild", "Wild Draw +4"};
 
-    public static final String[] SUITS = {
-        "Clubs", "Diamonds", "Hearts", "Spades"};
-
-    private final int rank;
-
-    private final int suit;
+    public static final String[] COLORS = {
+        "Red", "Yellow", "Blue", "Green"};
+    
+    // Card color. Can be null for certain cards (i.e wild type)
+    final int color;
+    
+    // The type of uno card it is.
+    final int  cardType;
+    
+    // Card value can be either a number, action, or wild card type.
+    final int cardValue;
 
     /**
-     * Constructs a card of the given rank and suit.
+     * Constructs a card of the given card type, color, & cardValue.
      */
-    public Card(int rank, int suit) {
-        this.rank = rank;
-        this.suit = suit;
+    public Card(int cardType, int color, int cardValue) {
+        this.cardType = cardType;
+        this.color = color;
+        this.cardValue = cardValue;
+        //System.out.println("New Card created... Card Type: " + this.cardType + " Color: " + this.color + " Card Value: " + this.cardValue);
     }
 
     /**
-     * Returns a negative integer if this card comes before
-     * the given card, zero if the two cards are equal, or
-     * a positive integer if this card comes after the card.
+     * CompareTo not really needed.
      */
     public int compareTo(Card that) {
-        if (this.suit < that.suit) {
-            return -1;
-        }
-        if (this.suit > that.suit) {
-            return 1;
-        }
-        if (this.rank < that.rank) {
-            return -1;
-        }
-        if (this.rank > that.rank) {
-            return 1;
-        }
         return 0;
     }
 
-    /**
+    /** Most likely wont be used.
      * Returns true if the given card has the same
      * rank AND same suit; otherwise returns false.
      */
     public boolean equals(Card that) {
-        return this.rank == that.rank
-            && this.suit == that.suit;
-    }
-
-    /**
-     * Gets the card's rank.
-     */
-    public int getRank() {
-        return this.rank;
-    }
-
-    /**
-     * Gets the card's suit.
-     */
-    public int getSuit() {
-        return this.suit;
-    }
-
-    /**
-     * Returns the card's index in a sorted deck of 52 cards.
-     */
-    public int position() {
-        return this.suit * 13 + this.rank - 1;
+        return this.cardType == that.cardType
+            && this.color == that.color
+            && this.cardValue == that.cardValue;
     }
 
     /**
      * Returns a string representation of the card.
      */
     public String toString() {
-        return RANKS[this.rank] + " of " + SUITS[this.suit];
+    	if(CARD_TYPE[this.cardType] == CARD_TYPE[0]) {  // Number card type
+    		return NUMBERS[this.cardValue] + " " + COLORS[this.color];
+    	}else if(CARD_TYPE[this.cardType] == CARD_TYPE[1]) {  // Action card type
+    		return ACTIONS[this.cardValue] + " " + COLORS[this.color];
+    	} else { // last card type which is wild.
+    		return WILDS[this.cardValue];
+    	}
     }
 
 }
