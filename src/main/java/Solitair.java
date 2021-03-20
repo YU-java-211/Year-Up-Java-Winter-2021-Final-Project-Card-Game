@@ -181,7 +181,7 @@ public class Solitair {
 		
 		
 	// new method for card renk need to be created for the 4 mpy slotes on the top.	
-		
+	//logic for moving the card to the 4 empty spot	
 		
 		
 		
@@ -324,6 +324,9 @@ public class Solitair {
 	    
 	    /**
 	     * Displays the state of the game.
+	     * Show the state of 18 more piles (anything face up needs to print out cards
+	     * anything faced down needs to print no. of cards)
+	     * Label your display
 	     */
 	    public void displayState() {
 	      System.out.println("Discard pile:  ");
@@ -335,11 +338,14 @@ public class Solitair {
 	        in.nextLine();
 	        */
 	    }
+	    
 
 	    /**
 	     * One player takes a turn.
+	     * write player taking a turn in solitair example below is for the Eights
+	     * Ranking the next step and writing the method for gameplay
 	     */
-	    public void takeTurn(Player player) {
+	    public void takeTurn() {
 	        Card prev = discardPile.lastCard();
 	        Card next = player.play(this, prev);
 	        discardPile.addCard(next);
@@ -355,19 +361,13 @@ public class Solitair {
 	        // changed from one to players.get(0);
 	        // then rename the player in this to playerTurn so it doesn't clash
 	        // with other code we have in our foreach looops
-	        Player playerTurn = players.get(0);
-
+	       
 	        // keep playing until there's a winner
 	        while (!isDone()) {
 	            displayState();
-	            takeTurn(playerTurn);
-	            playerTurn = nextPlayer(playerTurn);
+	            takeTurn();
 	        }
 
-	        // display the final score
-	        for (Player player : players) {
-	            player.displayScore();
-	        }
 	        /* one.displayScore();
 	        two.displayScore();
 	        */
@@ -377,7 +377,7 @@ public class Solitair {
 	     * Creates the game and runs it.
 	     */
 	    public static void main(String[] args) {
-	        Eights game = new Eights();
+	        Solitair game = new Solitair();
 	        game.playGame();
 	    }
 
