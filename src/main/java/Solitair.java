@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Solitair {
-
+		
 	     //private Player one;
 	    //private Player two;
 	    private Hand drawPile;
@@ -187,8 +187,6 @@ public class Solitair {
 		
 		
 		
-		
-		
 	// clubs is 0 diamonds is 1 hearts is 2 and spades is 3	
 		
 		
@@ -329,15 +327,72 @@ public class Solitair {
 	     * Label your display
 	     */
 	    public void displayState() {
-	      System.out.println("Discard pile:  ");
+		      System.out.println("Discard pile:  ");
+		      
+		        System.out.println("testing: ");
 
-	        discardPile.display();
-	        System.out.print("Draw pile: ");
-	        System.out.println(drawPile.size() + " cards");
-	        /* Disabling for easier automation
-	        in.nextLine();
-	        */
-	    }
+		        discardPile.display();
+		        System.out.println("testing: ");
+
+		        System.out.print("Draw pile: ");
+		        System.out.println(drawPile.size() + " cards");
+		        
+		        System.out.println();
+		        System.out.println("testing Starts: ");
+
+		        
+		        System.out.println();
+		        System.out.println("testing pile1FaceUp: ");
+		        pile1FaceUp.display();
+		        System.out.println();
+		        
+		        System.out.println("testing pile2FaceUp: ");
+		        pile2FaceUp.display();
+		        System.out.println();
+		        
+		        System.out.println("testing pile3FaceUp: ");
+		        pile3FaceUp.display();
+		        System.out.println();
+		        
+		        System.out.println("testing pile4FaceUp: ");
+		        pile4FaceUp.display();
+		        System.out.println();
+		        
+		        System.out.println("testing pile5FaceUp: ");
+		        pile5FaceUp.display();
+		        System.out.println();
+		        
+		        System.out.println("testing pile6FaceUp: ");
+		        pile6FaceUp.display();
+		        System.out.println();
+		        
+		        System.out.println("testing pile7FaceUp: ");
+		        pile7FaceUp.display();
+		        System.out.println();
+		        
+		        
+		        System.out.println("testing pileUpTo1: ");
+		        pileUpTo1.display();
+		        System.out.println();
+
+		        System.out.println("testing pileUpTo2: ");
+		        pileUpTo2.display();
+		        System.out.println();
+		        
+		        System.out.println("testing pileUpTo3: ");
+		        pileUpTo3.display();
+		        System.out.println();
+		        
+		        System.out.println("testing pileUpTo4: ");
+		        pileUpTo4.display();
+		        System.out.println();
+		        
+		        
+
+		        /* Disabling for easier automation
+		        in.nextLine();
+		        */
+		    }
 	    
 
 	    /**
@@ -365,7 +420,7 @@ public class Solitair {
 	        // keep playing until there's a winner
 	        while (!isDone()) {
 	            displayState();
-	            takeTurn();
+	            //takeTurn();
 	        }
 
 	        /* one.displayScore();
