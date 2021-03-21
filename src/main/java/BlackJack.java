@@ -20,7 +20,7 @@ public class BlackJack{
 	        deck.deal(dealer.getHand(), 2);
 	    }
 	
-	 public void displayState() {
+	 public void displayStatePlayer() {
 	        System.out.print("Draw pile: ");
 	        System.out.println("Player has ");
 	        
@@ -36,9 +36,16 @@ public class BlackJack{
 		        pointPlayer += card.getRank();
 	        }
 	        
-	        System.out.println(pointPlayer + aces + " or " + pointPlayer + (aces * 11));
+	        int smallPointPlayer = pointPlayer + aces;
+	        int largePointPlayer = pointPlayer + (aces * 11);
+	        
+	        System.out.println(smallPointPlayer + " or " + largePointPlayer);
+	 }
+	 
+	 public void displayStateDealer() {
 	        
 	        pointDealer = 0; 
+	        int aces = 0; 
 	        Hand dealerHand = dealer.getHand();
 	        for (int i = 1; i < dealerHand.cards.size(); i++) {
 	        	Card card = dealerHand.getCard(i); 
@@ -49,10 +56,11 @@ public class BlackJack{
 	 	        pointDealer += card.getRank();
 	        }
 	        
-	        System.out.println(pointDealer + aces + " or " + pointDealer + (aces * 11) + " showing, one card face down.");
+	        int smallPointDealer = pointDealer + aces; 
+	        int largePointDealer = pointDealer + (aces * 11); 
+	        
+	        System.out.println(smallPointDealer + " or " + largePointDealer + " showing, one card face down.");
 	    }
-	 
-	
 	 
 	 public void playGame() {
 		  
