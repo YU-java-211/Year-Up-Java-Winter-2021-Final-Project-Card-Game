@@ -126,7 +126,7 @@ public class Bluff {
 		// take i, and as long as i is less than or equal to cardNum and the player's hand isn't empty
 		// add cards selected randomly from the player's hand to the temp pile
 		// and take those cards out of the player's hand
-		// since i starts at 1, if the temp pile already has 3 cards in it, it'll only run once
+		// since i starts at 0, if the temp pile already has 3 cards in it, that means the number passed would be 1 so it'll only run once
 		else {
 			while(i < cardNum && !player.getHand().isEmpty()) {
 				int randSelect = randGen.nextInt(player.getHand().size());
@@ -317,6 +317,15 @@ public class Bluff {
 		
 		for(Player player : players) {
     		if(players.indexOf(player) != players.indexOf(currentPlayer)) {
+    			// this checks if we're on an AI player
+    			// if we are, then the AI player goes through its hand
+    			// and it checks if the cards it has make the current claim impossible!
+    			// for instance, if the current player is claiming they're playing 3 aces
+    			// which would make tempPile size 3
+    			// but the AI has 2 aces in its hand
+    			// then clearly the current player's claim is mathematically impossible, since there's only 4 aces
+    			// so they must be lying!
+    			// and thus the AI will call them on it
     			if(players.indexOf(player) != 3) {
     				int cardNum = 0;
     				
