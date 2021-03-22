@@ -10,7 +10,7 @@ public class Hand extends CardCollection {
         super(label);
     }
 
-    /** */
+    /**
      * Prints the label and cards.
      */
     public void display() {
