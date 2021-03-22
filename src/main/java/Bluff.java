@@ -15,7 +15,7 @@ public class Bluff {
 		/* features I would like to add:
 		 * sorting cards in hand by rank
 		 * giving the player only 30 seconds to decide if they want to call bluff or not
-		 * allow for player to play with 2-4 AI players instead of inherently having 3 (needs way to deal whole deck of cards to players when 52 can't be divided evenly by player number)
+		 * allow for player to play with 2-4 AI players instead of inherently having 3
 		 * much smarter AI
 		 * multiplayer--allow for multiple real people to play together!
 		 */
