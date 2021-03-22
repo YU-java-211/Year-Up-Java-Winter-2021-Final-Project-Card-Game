@@ -317,11 +317,8 @@ public class Bluff {
 			}
 		}
 		
-		// this has to happen twice for two reasons
-		// one: the lie method that might be called above picks cards at random from cards in the player's hand
-		// which means if cards already in the temp pile aren't removed above, they might end up in the temp pile twice.
-		// two: if the cards already in the temp pile aren't removed above, then the player can't see the cards they have remaining
-		// after the cards of the appropriate rank have been put in the temp pile (if any).
+		// I think with the way the lie method works this might actually be redundant now?
+		// but I'm not dealing with that right now
 		removeCards(currentPlayer);
 		
 		// new set of cards you're going to play, if you've chosen to lie
