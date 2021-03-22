@@ -11,6 +11,7 @@ public class Solitair {
 		
 	     //private Player one;
 	    //private Player two;
+		ArrayList <Hand> faceUpPiles;
 	    private Hand drawPile;
 	    private Hand discardPile;
 	    private Scanner in;
@@ -64,7 +65,7 @@ public class Solitair {
 
 	        // turn one card face up
 	        discardPile = new Hand("Discards");
-	        deck.deal(discardPile, 3);
+	        deck.deal(discardPile, 1);
 
 	        // put the rest of the deck face down you need 7 of these
 	      
@@ -130,6 +131,18 @@ public class Solitair {
 	       
 	        pile7FaceUp = new Hand("pile7FaceUp");
 	        deck.deal(pile7FaceUp, 1);
+	        
+	        faceUpPiles = new ArrayList<Hand>();
+
+	        faceUpPiles.add(pile1FaceUp);
+	        faceUpPiles.add(pile2FaceUp);
+	        faceUpPiles.add(pile3FaceUp);
+	        faceUpPiles.add(pile4FaceUp);
+	        faceUpPiles.add(pile5FaceUp);
+	        faceUpPiles.add(pile6FaceUp);
+	        faceUpPiles.add(pile7FaceUp);
+
+
 
 	       //create a new hand and call it a new pile and all the rest of the cards to it.
 	        drawPile = new Hand("Draw pile");
@@ -188,6 +201,112 @@ public class Solitair {
 		
 		
 	// clubs is 0 diamonds is 1 hearts is 2 and spades is 3	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		public void reshuffle() {
 	        // save the top card
 	        Card prev = discardPile.popCard();
@@ -221,66 +340,67 @@ public class Solitair {
 	     * Label your display
 	     */
 	    public void displayState() {
-	    	 System.out.println("start");
-		     //display drawpile face up card
-		      System.out.println("Draw pile Faceup:  ");
-		      discardPile.display();
+		      System.out.println("Discard pile:  ");
 		      
-		      //displat size of draw card face down
+		        System.out.println("testing: ");
+
+		        discardPile.display();
+		        System.out.println("testing: ");
+
 		        System.out.print("Draw pile: ");
 		        System.out.println(drawPile.size() + " cards");
-		        System.out.println();
 		        
+		        System.out.println();
+		        System.out.println("testing Starts: ");
 
-		        //display size of facedown card in the each pile
+		        
 		        System.out.println();
-		        System.out.printf("pile1 facedown total cards: ");
-		        System.out.println(pile1.size() + " cards");
-		        
-		        System.out.printf("pile2 facedown total cards: ");
-		       System.out.println( pile2.size() + " cards");
-		        
-		        System.out.printf("pile3 facedown total cards: ");
-		        System.out.println( pile3.size() + " cards");
-		        
-		        System.out.printf("pile4 facedown total cards: ");
-		        System.out.println(pile4.size()+ " cards");
-		        
-		        System.out.printf("pile5 facedown total cards: ");
-		        System.out.println( pile5.size() + " cards");
-		        
-		        System.out.printf("pile6 facedown total cards: ");
-		        System.out.println( pile6.size() + " cards");
-		        
-		        System.out.printf("pile7 facedown total cards: ");
-		        System.out.println(pile7.size() + " cards");
+		        System.out.println("testing pile1FaceUp: ");
+		        pile1FaceUp.display();
 		        System.out.println();
 		        
-		        //display Faceup card each pile
+		        System.out.println("testing pile2FaceUp: ");
+		        pile2FaceUp.display();
+		        System.out.println();
 		        
-			    pile1FaceUp.display();
-			    pile2FaceUp.display();
-			    pile3FaceUp.display();
-			    pile4FaceUp.display();
+		        System.out.println("testing pile3FaceUp: ");
+		        pile3FaceUp.display();
+		        System.out.println();
+		        
+		        System.out.println("testing pile4FaceUp: ");
+		        pile4FaceUp.display();
+		        System.out.println();
+		        
+		        System.out.println("testing pile5FaceUp: ");
 		        pile5FaceUp.display();
+		        System.out.println();
+		        
+		        System.out.println("testing pile6FaceUp: ");
 		        pile6FaceUp.display();
+		        System.out.println();
+		        
+		        System.out.println("testing pile7FaceUp: ");
 		        pile7FaceUp.display();
-		      
-		        //display Base card face up
-		        System.out.println("pileBase1: ");
+		        System.out.println();
+		        
+		        
+		        System.out.println("testing pileUpTo1: ");
 		        pileUpTo1.display();
-		       
-		        System.out.println("pileBase2: ");
-		        pileUpTo2.display();
-   
-		        System.out.println("pileBase3: ");
-			    pileUpTo3.display();
-			   
-				System.out.println("pileBase4: ");
-				pileUpTo4.display();
+		        System.out.println();
 
-				System.out.println("Go next");
-			     
+		        System.out.println("testing pileUpTo2: ");
+		        pileUpTo2.display();
+		        System.out.println();
+		        
+		        System.out.println("testing pileUpTo3: ");
+		        pileUpTo3.display();
+		        System.out.println();
+		        
+		        System.out.println("testing pileUpTo4: ");
+		        pileUpTo4.display();
+		        System.out.println();
+		        
+		        
 
 		        /* Disabling for easier automation
 		        in.nextLine();
@@ -294,11 +414,21 @@ public class Solitair {
 	     * Ranking the next step and writing the method for gameplay
 	     */
 	    public void takeTurn() {
-	        Card prev = discardPile.lastCard();
-	        discardPile.addCard(next);
-
-	        //System.out.println(player.getName() + " plays " + next);
-	        //System.out.println();
+	    	Card firstCard =faceUpPiles.get(0).getCard(0);
+	    	for(int i = 0;i < faceUpPiles.size();i++) {
+	    		if(canStack(firstCard,faceUpPiles.get(i).lastCard())) {
+	    			faceUpPiles.get(i-1).addCard(faceUpPiles.get(i).lastCard());
+	    			faceUpPiles.get(i-1).popCard();
+	    			System.out.println("Card can stack");
+	    			faceUpPiles.get(i-1).display();
+	    			faceUpPiles.get(i).display();
+	    			break;
+	    			
+	    		}
+	    		else {
+	    			firstCard=faceUpPiles.get(i).lastCard();
+	    		}
+	    	}
 	    }
 
 	    /**
@@ -310,14 +440,17 @@ public class Solitair {
 	        // with other code we have in our foreach looops
 	       
 	        // keep playing until there's a winner
-	        while (!isDone()) {
+	        /*while (!isDone()) {
 	            displayState();
 	            //takeTurn();
-	        }
+	        }*/
 
 	        /* one.displayScore();
 	        two.displayScore();
 	        */
+	    	displayState();
+	    	takeTurn();
+	    	displayState();
 	    }
 
 	    /**
