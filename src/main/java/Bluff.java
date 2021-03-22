@@ -31,7 +31,7 @@ public class Bluff {
         
         input = new Scanner(System.in);
         
-        System.out.println("Please enter the name of each of your players on a seperate line (last name entered will be you, the player): ");
+        System.out.println("Please enter the name of each of your players on a separate line (last name entered will be you, the player): ");
         
         for(int i = 0; i < 4; i++) {
         	String playerName = input.nextLine();
@@ -96,7 +96,8 @@ public class Bluff {
 				j++;
 			}
 			
-			// tempPile.size() < 4 is there because I don't trust the player to not send like...3 when they already have 3 cards in the pile
+			// tempPile.size() < 4 is there because I don't trust the player to not send like...3 as the number of cards to add
+			// when they already have 3 cards in the pile
 			// anyway this runs as long as their hand isn't empty, the pile size isn't 4, and they haven't reached the number of cards they wanted to enter
 			while(i < cardNum && !player.getHand().isEmpty() && tempPile.size() < 4) {
 				// here we get the number of the card the player wants to put in the pile
