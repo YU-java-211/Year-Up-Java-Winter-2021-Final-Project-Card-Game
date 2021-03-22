@@ -10,21 +10,31 @@
 
 * Game options:
    * We have crazy 8's
-   * Solitaire
-   * Uno (work with graphics group)
-   * Go fish
+   
+   * Solitaire (Figuring out how to position cards on a table, making sure cards can be moved around on the table by pointing, clicking, holding, and draging)
+   - Create logic for the game (user piles must be red/black alternating, decending in value)
+   - draw pile flipped by 3
+   - Win all 4 suits king to ace
+   - Only kings can go in a blank spot
+   - Single player game
+   - Anifa & Abduvoris
+
+
+   * Uno (work with graphics group) - Merron, Yosuof, Javier, Maritza
    * Rummy
-   * War
-   * Pokemon (work with graphics group) <- stretch goal (also possible copywrite problems)
-   * Black Jack
-   * thirteen
+   * War - James
+   * Black Jack - Noe, Monica
+   * thirteen  - Asa, Lylla
+  
    * Texas Holdem
    * poker?
+   * 3 card poker -Prashant, Asa (after 13)
    * call bridge/call break
-   * hearts
+   * hearts - Rizkika, AZ
    * Palace
-   * GoldFish
-   * bs (might have to rename?) 30 second interval to call bs before it moves to next person's turn, a button to make the call instead of verbal or chat.
+   * GoldFish/GoFish -Addy, Ernesto
+   * bs (might have to rename?) 30 second interval to call bs before it moves to next person's turn, a button to make the call instead of verbal or chat. -Cedar
+   
 
 
 Functionality (once we have a working prototype):
