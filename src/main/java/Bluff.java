@@ -12,13 +12,9 @@ public class Bluff {
 	private Scanner input;
 	
 	public Bluff() {
-		/* less important, but would be nice to figure out:
+		/* features I would like to add:
 		 * sorting cards in hand by rank
 		 * giving the player only 30 seconds to decide if they want to call bluff or not
-		 */
-		
-		/* feature request ideas:
-		 * if I don't get to them today, the less important things that would be nice to figure out
 		 * allow for player to play with 2-4 AI players instead of inherently having 3 (needs way to deal whole deck of cards to players when 52 can't be divided evenly by player number)
 		 * much smarter AI
 		 * multiplayer--allow for multiple real people to play together!
@@ -104,7 +100,7 @@ public class Bluff {
 			// anyway this runs as long as their hand isn't empty, the pile size isn't 4, and they haven't reached the number of cards they wanted to enter
 			while(i < cardNum && !player.getHand().isEmpty() && tempPile.size() < 4) {
 				// here we get the number of the card the player wants to put in the pile
-				// because I printed out cards starting at 0 but remove cards based on index in array list
+				// and because I printed out cards starting at 0 but remove cards based on index in array list
 				// I take in the number the user wants and subtract one
 				System.out.println("\nEnter the number of the card you would like to play: ");
 				int k = input.nextInt() - 1;
@@ -227,7 +223,6 @@ public class Bluff {
 		
 		// display cards you are going to play
 		// but only if you're the real player
-		// sorry no easy wins anymore
 		if(players.indexOf(currentPlayer) == 3) {
 			System.out.println("\nHere are the cards you are currently going to play (if nothing, you are currently playing no cards): ");
 			tempPile.display();
@@ -295,15 +290,6 @@ public class Bluff {
 			// I would kind of like this to not be random but I'm not sure how else to do it
 			if(rand < .5 || tempPile.size() == 0) {
 				// pick random number to send to lie method
-				// you know I feel like with how I have the lie method set up now I could just trash all this
-				// and just have it generate a random number between 1 and 4
-				// because ultimately it won't matter since the while loop terminates if:
-				// the player's hand is empty
-				// the desired number of cards have been added
-				// or the temp pile size is 4
-				// but I worked hard to make this and I think that with how I'm going to ask the player to pick their cards, I'll be able to
-				// take the temp pile size check out of the AI part of the method
-				// so I'm leaving this in
 				int randNum;
 				
 				if(tempPile.size() == 3) {
@@ -316,10 +302,6 @@ public class Bluff {
 				lie(currentPlayer, randNum);
 			}
 		}
-		
-		// I think with the way the lie method works this might actually be redundant now?
-		// but I'm not dealing with that right now
-		removeCards(currentPlayer);
 		
 		// new set of cards you're going to play, if you've chosen to lie
 		// ....or you know if you haven't then you'll just see the exact same cards again
@@ -370,12 +352,6 @@ public class Bluff {
     	}
 		
 		// if the temp pile isn't empty, that means no one called bluff, because if they had the temp pile would be empty
-		// duplicates were happening here for two reasons:
-		// first, I didn't use dealAll correctly; I was dealing the pile...into tempPile.
-		// second, I didn't clear tempPile!
-		// which...I think somehow resulted in there being duplicates in tempPile sometimes?
-		// and then....people picked up those duplicates.
-		// I don't know the point is it works now
 		if(!tempPile.isEmpty()) {
 			System.out.println("\nNo one called bluff on " + currentPlayer.getName() + "! They have successfully played their cards.");
         	// add tempPile cards to pile, empty tempPile	
