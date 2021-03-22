@@ -131,9 +131,7 @@ public Heart() {
     public Player nextPlayer(Player current) {
         if (players.indexOf(current) == players.size() - 1) {
             return players.get(0);
-        }
-
-        else if (players.indexOf(current) < players.size()) {
+        } else if (players.indexOf(current) < players.size()) {
             int playerIndex = players.indexOf(current) + 1;
             return players.get(playerIndex);
         } else {
