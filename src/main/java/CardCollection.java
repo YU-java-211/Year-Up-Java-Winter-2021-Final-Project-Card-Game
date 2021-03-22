@@ -6,7 +6,7 @@ import java.util.Random;
  */
 public class CardCollection {
 
-    private String label;
+	String label;
     ArrayList<Card> cards;
 
     /**
